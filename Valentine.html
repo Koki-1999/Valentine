@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vale-ntine 💛</title>
+
+  <!-- Romantic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #fff0f6, #fff7fb);
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      max-width: 420px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .sub {
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    .gif {
+      margin: 18px 0;
+    }
+
+    iframe {
+      border-radius: 14px;
+      width: 100%;
+      max-width: 300px;
+      height: 300px;
+      border: none;
+    }
+
+    .buttons {
+      margin-top: 22px;
+      position: relative;
+      height: 80px;
+    }
+
+    .yes {
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: #e60073;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .no {
+      font-size: 1rem;
+      color: #aaa;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+
+    .details {
+      font-size: 1.2rem;
+      line-height: 1.7;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5b3fa55b35.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- PAGE 1 -->
+  <div class="page active" id="page1">
+    <h1>Hey my Vale,<br>will you be my Vale-ntine?</h1>
+
+    <div class="gif">
+      <iframe src="https://tenor.com/embed/10586631440146974859"></iframe>
+    </div>
+
+    <div class="buttons">
+      <div class="yes" onclick="startExperience()">YES</div>
+      <div class="no" id="noBtn">No</div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page" id="page2">
+    <h1>Our Date 💕</h1>
+
+    <div class="details">
+      <strong>Date:</strong> Friday 13th<br>
+      <strong>Time:</strong> 5:00 PM<br>
+      <strong>Where:</strong><br>
+      Lintons Night Market<br>
+      Pretoria
+    </div>
+
+    <div class="buttons">
+      <div class="yes" onclick="nextPage(3)">Continue</div>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page" id="page3">
+    <h1>See you there 😌</h1>
+
+    <div class="gif">
+      <iframe src="https://tenor.com/embed/1116438850737752104"></iframe>
+    </div>
+
+    <p class="sub">
+      I already knew what your answer would be.<br>
+      I just wanted to ask you properly.
+    </p>
+  </div>
+
+  <script>
+    function nextPage(pageNumber) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + pageNumber).classList.add('active');
+    }
+
+    function startExperience() {
+      const music = document.getElementById('music');
+      music.volume = 0.6;
+      music.play();
+      nextPage(2);
+    }
+
+    // NO button runs away
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 60 - 30;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+
+</body>
+</html>
